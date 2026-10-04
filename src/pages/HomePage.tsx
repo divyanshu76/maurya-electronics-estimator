@@ -68,6 +68,9 @@ export default function HomePage() {
     },
   ];
 
+  const heroForeground = businessConfig.heroImage || "/bgimage.png";
+  const heroBackground = businessConfig.heroBackground || heroForeground;
+
   return (
     <div style={{ background: "var(--color-bg)" }}>
       {/* ── Hero Section ─────────────────────────────────────── */}
@@ -75,7 +78,7 @@ export default function HomePage() {
         {/* Dynamic Background Layer (Whole Section) */}
         <div 
           className="hero-permanent-bg" 
-          style={{ backgroundImage: `url('${businessConfig.heroBackground || businessConfig.heroImage || businessConfig.logo}')` }} 
+          style={{ backgroundImage: `url('${heroBackground}')` }} 
           aria-hidden="true"
         />
         <div className="hero-bg-overlay" aria-hidden="true" />
@@ -145,16 +148,7 @@ export default function HomePage() {
 
             {/* Foreground Main Image Frame */}
             <div className="hero-image-frame">
-              {businessConfig.heroImage ? (
-                <img src={businessConfig.heroImage} alt="Electrical Materials" className="hero-main-image" />
-              ) : (
-                <img 
-                  src={businessConfig.logo} 
-                  alt="Maurya Electronics" 
-                  className="hero-main-image" 
-                  style={{ objectFit: 'contain', padding: '40px', background: 'white' }} 
-                />
-              )}
+              <img src={heroForeground} alt="Electrical Materials" className="hero-main-image" />
             </div>
           </div>
         </div>
